@@ -19,6 +19,8 @@ const Ascii = require("ascii-table");
 
 client.commands = new Collection();
 
+require("../Systems/GiveawaySys")(client);
+
 ["Events", "Commands"].forEach(handler => {
     require(`./Handlers/${handler}`)(client, PG, Ascii);
 });
