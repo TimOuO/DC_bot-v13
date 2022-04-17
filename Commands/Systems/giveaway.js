@@ -252,7 +252,7 @@ module.exports = {
         break;
 
         default: {
-            console.log("Error in giveaway command.")
+            console.log("贈品指令出現錯誤") // Error in giveaway command.
         }
         }
     }
