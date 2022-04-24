@@ -5,7 +5,7 @@ const {
 
 module.exports = {
     name: "清除訊息", // clear 清除
-    description: "在此頻道刪除最後 N 則訊息獲此頻道特定人物的 N 則訊息", // Deletes a specified number of messages from a channel or a target.
+    description: "在此頻道刪除最後 N 則訊息 or 此頻道特定人物的 N 則訊息", // Deletes a specified number of messages from a channel or a target.
     permission: "MANAGE_MESSAGES",
     options: [{
             name: "數量", //amount

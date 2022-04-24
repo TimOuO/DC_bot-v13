@@ -8,7 +8,7 @@ const ms = require("ms");
 module.exports = {
     name: "贈品", // giveaway
     description: "蹭品系統",
-    permissions: "ADMINISTRATOR",
+    permission: "ADMINISTRATOR",
     options: [{
             name: "活動",
             description: "開始贈品活動",
