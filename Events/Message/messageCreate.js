@@ -6,7 +6,7 @@ const {
 module.exports = {
     name: "messageCreate",
     /**
-     * @
+     * 
      * @param {Message} message
      */
     execute(message) {
@@ -14,10 +14,16 @@ module.exports = {
             return
         } else if (message.content.includes("嗨") ||
             message.content.includes("哈囉") ||
-            message.content.toLowerCase().includes("hi") ||
-            message.content.toLowerCase().includes("hello")) {
+            message.content.toLowerCase().includes("hi")) {
             message.channel.send(`${message.author} 哈囉 😊 可以使用 / 指令呦~`);
             message.react("🙌");
+        } else if (message.content.includes("寶貝") ||
+            message.content.toLowerCase().includes("baby")) {
+            message.channel.send(`${message.author} 在呢`)
+                .then(message.channel.send("https://tenor.com/view/%E6%8A%B1-lift-cute-love-funny-gif-15526532"))
+        } else if (message.content.toLowerCase().includes("breakup")) {
+            message.channel.send(`${message.author} 那可不行喔`)
+                .then(message.channel.send("https://tenor.com/view/couple-beat-smack-naughty-mochi-gif-16143239"));
         } else if (message.content.includes("跟你說喔")) {
             message.channel.send(`說甚麼呢 🤔`)
                 .then(message.channel.send(`${message.author}很可愛呢 💜`));
@@ -33,11 +39,14 @@ module.exports = {
             message.react("💙");
             message.react("💗");
         } else if (message.content == ("喔") ||
-            message.content == ("是喔")) {
-            message.channel.send(`${message.author}為什麼句點我 👉🥺👈`)
+            message.content == ("是喔") ||
+            message.content.includes("喔喔")) {
+            message.channel.send(`${message.author}為什麼句點我 🥺`)
                 .then(message.channel.send("https://cdn.discordapp.com/attachments/967328542847275051/967328558701764618/unknown.png"));
             message.react("🐽");
-        } else if (message.content.includes("哼")) {
+        } else if (message.content.includes("哼") ||
+            message.content.includes("亨") ||
+            message.content.includes("😐")) {
             message.channel.send(`${message.author}怎麼了呀`)
                 .then(message.channel.send(`誰欺負妳我幫妳揍他 😤`));
         } else if (message.content.includes("被你氣死")) {
@@ -50,18 +59,18 @@ module.exports = {
         } else if (message.content.includes("臭胖")) {
             message.channel.send(`講錯囉~ 是香胖歐 😊`);
         } else if (message.content.includes("蛤")) {
-            message.channel.send(`蛤蜊是對可食用的雙殼綱貝類的泛稱~ \n 煮湯好喝 😋`);
+            message.channel.send(`蛤蜊是對可食用的雙殼綱貝類的泛稱~ \n煮湯好喝 😋`);
         } else if (message.content.includes("死胖子") ||
             message.content.includes("揍你")) {
-            message.channel.send(`${message.author}怎麼忍心 🥺 \n 看在我幫妳按熊貓的份上`);
+            message.channel.send(`${message.author}怎麼忍心 🥺 \n看在我幫妳按熊貓的份上`);
             message.react("🐼");
         } else if (message.content.includes("憨")) {
-            message.channel.send(`肯定不是我呢 😀 \n 但想幫妳按一個流口水`);
+            message.channel.send(`肯定不是我呢 😀 \n但想幫妳按一個流口水`);
             message.react("🤤");
         } else if (message.content.includes("掰") ||
             message.content.includes("拜")) {
-            message.channel.send(`豈是你說掰就掰呀 \n 回來喔 눈▂눈`);
-            setTimeout(message.channel.send(`好吧 👋 晚點見囉 ❤️`), 2000);
+            message.channel.send(`豈是你說掰就掰呀 \n回來喔 눈▂눈`)
+                .then(message.channel.send(`\n\n\n\n\n\n\n\n\n\n好吧 👋 晚點見囉 ❤️`));
         } else if (message.content.includes("靠")) {
             message.channel.send(`Cow 是牛喔~`);
             message.react("🐄");
@@ -70,11 +79,16 @@ module.exports = {
             message.react("🐃");
         } else if (message.content == ("胖胖") ||
             message.content == ("呼呼") ||
-            message.content == ("胖子")) {
+            message.content == ("胖子") ||
+            message.content == ("胖呼呼") ||
+            message.content == ("胖乎乎")) {
             message.channel.send(`怎麼了呀阿肥肥 😀`);
         } else if (message.content.includes("變態") ||
-            message.content.includes("欠打")) {
-            message.channel.send(`誰!? Who!? 蝦郎!? 😮 \n 肯定不是我 😉`);
+            message.content.includes("欠打") ||
+            message.content.includes("欠揍") ||
+            message.content.includes("欠奏") ||
+            message.content.includes("色鬼")) {
+            message.channel.send(`誰!? Who!? 蝦郎!? 😮 \n肯定不是我 😉`);
         } else if (message.content.includes("不理你")) {
             message.channel.send(`不要不理我拉~ 阿肥肥 🥺`);
             message.react("🐷");
@@ -96,9 +110,9 @@ module.exports = {
             message.channel.send(`這個 No No 喔`);
             message.react('❌');
         } else if (message.content.includes("🌚")) {
-            message.channel.send(`${message.author}太陽曬很多喔 😏 \n 要記得擦防曬~ 👍`);
+            message.channel.send(`${message.author}太陽曬很多喔 😏 \n要記得擦防曬~ 👍`);
         } else if (message.content.includes("🌝")) {
-            message.channel.send(`${message.author}很棒呢 😊 \n 有好好擦防曬~`);
+            message.channel.send(`${message.author}很棒呢 😊 \n有好好擦防曬~`);
         } else if (message.content.includes("晚上好")) {
             message.channel.send(`晚上好的呢~`);
         } else if (message.content.includes("早上好")) {
@@ -116,17 +130,28 @@ module.exports = {
             message.content.includes("吃飯")) {
             message.channel.send(`${message.author} 看看你的肚肚 😀 \n 小心不要變這樣呦~`)
                 .then(message.channel.send("https://cdn.discordapp.com/attachments/967328542847275051/967329507646251088/unknown.png"));
+            message.react('🍕');
+            message.react('🍔');
+            message.react('🍟');
+            message.react('🌭');
+            message.react('🥞');
+            message.react('🥪');
+            message.react('🍗');
         } else if (message.content.toLowerCase().includes("mua") ||
             message.content.toLowerCase().includes("kiss") ||
             message.content.includes("親")) {
-            message.channel.send("https://c.tenor.com/FgYExssph6MAAAAC/kiss-love.gif")
-                .then(message.channel.send("https://c.tenor.com/ufd0ItHQVaIAAAAC/mochi-mochimochi.gif"));
+            message.channel.send("https://c.tenor.com/ufd0ItHQVaIAAAAC/mochi-mochimochi.gif");
         } else if (message.content.includes("偷看")) {
             message.channel.send("謀揪~ 我也要偷看呢 😶‍🌫️");
         } else if (message.content.includes("不要笑")) {
             message.channel.send("噗 (裝沒事").then(message.channel.send("可是會不小心忍不住 😺"));
             message.react('😺');
+        } else if (message.content.includes("貓")) {
+            message.channel.send("```\n　　　       　  ＿＿\n　    　　　　／＞　　 フ\n　   　 　　　|  　_　 _|\n　    　　　 ／` ミ＿꒳ノ\n　   　 　  /　　　 　|\n　   　　 /　 ヽ　　 ﾉ\n　    　 │　  |　|　|\n　   ／￣|　　|　|　|\n　  | (￣ ヽ＿_ヽ_)__)\n   　＼二つ\n```");
+            message.react('🐈');
+            message.react('🐈‍⬛');
         }
+
 
         if (message.content == "小遊戲") {
             const littleGame = new MessageEmbed()
@@ -176,6 +201,5 @@ module.exports = {
                 message.reply(`🖐️`)
             }
         }
-
     }
 }

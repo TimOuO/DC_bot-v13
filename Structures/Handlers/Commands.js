@@ -41,40 +41,42 @@ module.exports = async (client, PG, Ascii) => {
 
     client.on("ready", async () => {
         const MainGuild = await client.guilds.cache.get("960807141411790888");
+        MainGuild.commands.set(CommandsArray);
         /**伺服器 ID
         胖胖: 960807141411790888
         烏干達: 327432272481615872
         */
-        MainGuild.commands.set(CommandsArray).then(async (command) => {
-            const Roles = (commandName) => {
-                const cmdPerms = CommandsArray.find((c) => c.name === commandName).permission;
-                if (!cmdPerms) return null;
 
-                // return MainGuild.roles.cache.filter((r) => r.permissions.has(cmdPerms));
-                return MainGuild.roles.cache.filter((r) => r.permissions.has(cmdPerms) && !r.managed).first(10);
-            }
+        // MainGuild.commands.set(CommandsArray).then(async (command) => {
+        //     const Roles = (commandName) => {
+        //         const cmdPerms = CommandsArray.find((c) => c.name === commandName).permission;
+        //         if (!cmdPerms) return null;
 
-            const fullPermissions = command.reduce((accumulator, r) => {
-                const roles = Roles(r.name);
-                if (!roles) return accumulator;
+        //         // return MainGuild.roles.cache.filter((r) => r.permissions.has(cmdPerms));
+        //         return MainGuild.roles.cache.filter((r) => r.permissions.has(cmdPerms) && !r.managed).first(10);
+        //     }
 
-                const permissions = roles.reduce((a, r) => {
-                    return [...a, {
-                        id: r.id,
-                        type: "ROLE",
-                        permission: true
-                    }]
-                }, []);
+        //     const fullPermissions = command.reduce((accumulator, r) => {
+        //         const roles = Roles(r.name);
+        //         if (!roles) return accumulator;
 
-                return [...accumulator, {
-                    id: r.id,
-                    permissions
-                }]
-            }, []);
+        //         const permissions = roles.reduce((a, r) => {
+        //             return [...a, {
+        //                 id: r.id,
+        //                 type: "ROLE",
+        //                 permission: true
+        //             }]
+        //         }, []);
 
-            await MainGuild.commands.permissions.set({
-                fullPermissions
-            });
-        });
+        //         return [...accumulator, {
+        //             id: r.id,
+        //             permissions
+        //         }]
+        //     }, []);
+
+        // await MainGuild.commands.permissions.set({
+        //     fullPermissions
+        // });
+        // });
     });
 }

@@ -8,19 +8,11 @@ module.exports = async (client, PG, Ascii) => {
     (await PG(`${process.cwd()}/Events/*/*.js`)).map(async (file) => {
         const event = require(file);
 
-        /**
-        if (event.name) {
-            if (!Events.includes(event.name))
-                return Table.addRow(file.split("/")[7], "⛔ FAILED", "Event 名稱無效或丟失");
-        }
-        */
-
         if (!Events.includes(event.name) || !event.name) {
             const L = file.split("/");
-            await Table.addRow(`${event.name || "MISSING"}`, `⛔  Event 名稱無效或丟失:${L[3] + `/` + L[4]}`); // The Event name is invalid or missing:
+            await Table.addRow(`${event.name || "MISSING"}`, "⛔ FAILED", `The Event name is invalid or missing: ${L[L.length - 2]}/${L[L.length - 1]}`); // Event 名稱無效或丟失 The Event name is invalid or missing:
             return;
         }
-
 
         if (event.once) {
             client.once(event.name, (...args) => event.execute(...args, client));

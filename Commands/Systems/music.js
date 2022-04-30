@@ -38,24 +38,40 @@ module.exports = {
             type: "STRING",
             required: true,
             choices: [{
-                    name: "播放列表", //queue
+                    name: "🔢 播放列表", //queue
                     value: "播放列表"
                 },
                 {
-                    name: "跳過", // skip
+                    name: "⏭️ 跳過", // skip
                     value: "跳過"
                 },
                 {
-                    name: "暫停", // pause
+                    name: "⏸️ 暫停", // pause
                     value: "暫停"
                 },
                 {
-                    name: "恢復播放", // resume
+                    name: "⏯️ 恢復播放", // resume
                     value: "恢復播放"
                 },
                 {
-                    name: "停止", // stop
+                    name: "⏹️ 停止", // stop
                     value: "停止"
+                },
+                {
+                    name: "🔀 隨機播放", // shuffle
+                    value: "播放列表隨機播放"
+                },
+                {
+                    name: "🔃 自動播放", // autoplay
+                    value: "自動播放"
+                },
+                // {
+                //     name: "🈁 相關歌曲", // relatedsong
+                //     value: "相關歌曲"
+                // },
+                {
+                    name: "🔁 重複播放", // repeatmode
+                    value: "重複播放"
                 },
             ]
         }]
@@ -120,23 +136,51 @@ module.exports = {
                         case "跳過":
                             await queue.skip(VoiceChannel);
                             return interaction.reply({
-                                content: "⏭️ 跳過這首歌囉"
+                                content: "⏭️ 跳過這首歌囉~"
                             });
+
                         case "停止":
                             await queue.stop(VoiceChannel);
                             return interaction.reply({
-                                content: "⏹️ 音樂停止囉"
+                                content: "⏹️ 音樂停止囉~"
                             });
+
                         case "暫停":
                             await queue.pause(VoiceChannel);
                             return interaction.reply({
-                                content: "⏸️ 這首歌暫停囉"
+                                content: "⏸️ 這首歌暫停囉~"
                             });
+
                         case "恢復播放":
                             await queue.resume(VoiceChannel);
                             return interaction.reply({
-                                content: "⏯️ 歌曲恢復播放囉"
+                                content: "⏯️ 歌曲恢復播放囉~"
                             });
+
+                        case "播放列表隨機播放":
+                            await queue.shuffle(VoiceChannel);
+                            return interaction.reply({
+                                content: "🔀 播放列表已經隨機排序囉~"
+                            });
+
+                        case "自動播放":
+                            let Mode = await queue.toggleAutoplay(VoiceChannel);
+                            return interaction.reply({
+                                content: `🔃 自動播放模式設定: ${Mode? "開啟" : "關閉"}`
+                            });
+
+                            // case "相關歌曲":
+                            //     await queue.addRelatedSong(VoiceChannel);
+                            //     return interaction.reply({
+                            //         content: "🈁 相關歌曲已經被加到播放列表中囉~"
+                            //     });
+
+                        case "重複播放":
+                            let Mode2 = await client.distube.setRepeatMode(queue);
+                            return interaction.reply({
+                                content: `🔁 重複播放模式設定: ${Mode2 = Mode2 ? Mode2 == 2 ? "列表" : "歌曲" : "關閉"}`
+                            });
+
                         case "播放列表":
                             const tracks = queue.songs.map((song, id) => `**${id + 1}**. \`${song.name}\` - \`${song.formattedDuration}\``);
                             const songLong = queue.songs.length;
@@ -153,14 +197,6 @@ module.exports = {
                             return interaction.reply({
                                 embeds: [embed]
                             });
-
-                            //     .setDescription(`${queue.songs.map((song,id) => `\n**${id + 1}**. ${song.name} - \`${song.formattedDuration}\``)}`)
-                            // if (embed.length > 4096) {
-                            //     return interaction.reply("列表過長囉...");
-                            // } else
-                            //     return interaction.reply({
-                            //         embeds: [embed]
-                            //     });
                     }
                     return;
                 }

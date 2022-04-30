@@ -123,7 +123,7 @@ module.exports = {
                         hostedBy: "🥷 主辦: {this.hostedBy}",
                     },
                     pauseOptions: {
-                        isPaused: true,
+                        isPaused: false,
                         content: '⚠️ **此贈品已經暫停 !** ⚠️', // THIS GIVEAWAY IS PAUSED !
                         unPauseAfter: null,
                         embedColor: '#FFDD80',

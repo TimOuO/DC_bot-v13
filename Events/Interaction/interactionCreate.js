@@ -22,6 +22,12 @@ module.exports = {
                 ]
             }) && client.commands.delete(interaction.commandName);
 
+            if (!interaction.member.permissions.has(command.permission)) {
+                return interaction.reply({
+                    content: `您沒有此命令所需的權限: \`${interaction.commandName}\``,
+                    ephemeral: true
+                })
+            }
             command.execute(interaction, client);
         }
     }

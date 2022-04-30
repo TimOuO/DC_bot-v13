@@ -19,10 +19,6 @@ module.exports = {
             {
                 name: "離開的成員", // guildMemberRemove
                 value: "guildMemberRemove"
-            },
-            {
-                name: "贊助的成員", // guildMemberUpdate
-                value: "guildMemberUpdate"
             }
         ]
     }],
@@ -45,14 +41,6 @@ module.exports = {
             break;
         case "guildMemberRemove": {
             client.emit("guildMemberRemove", interaction.member);
-            interaction.reply({
-                content: "發送事件", // Emitted the event.
-                ephemeral: true
-            })
-        }
-        break;
-        case "guildMemberUpdate": {
-            client.emit("guildMemberUpdate", interaction.member);
             interaction.reply({
                 content: "發送事件", // Emitted the event.
                 ephemeral: true
