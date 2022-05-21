@@ -42,7 +42,7 @@ client.distube
         })
     })
 
-    .on('empty', queue => queue.textchannel.send({
+    .on('empty', queue => queue.textChannel.send({
         embeds: [new MessageEmbed()
             .setColor("BLUE")
             .setDescription(`語音頻道是空的！ 只好離開頻道... 😢`)

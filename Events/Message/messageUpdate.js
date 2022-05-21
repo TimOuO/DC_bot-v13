@@ -3,6 +3,10 @@ const {
     Message,
     WebhookClient
 } = require("discord.js");
+const {
+    LogWebhookId,
+    LogWebhookToken
+} = require("../../Structures/config.json");
 
 module.exports = {
     name: "messageUpdate",
@@ -30,11 +34,8 @@ module.exports = {
             });
 
         new WebhookClient({
-            url: "https://discord.com/api/webhooks/960810781220438086/kvz-CKMtY803inaSKG1nNRvk2exh2eIQG3AWJslUAweX7m8Sq00SKv-1fuf5brbzzlxA"
-            /**
-             * 胖胖: https://discord.com/api/webhooks/960810781220438086/kvz-CKMtY803inaSKG1nNRvk2exh2eIQG3AWJslUAweX7m8Sq00SKv-1fuf5brbzzlxA
-             * 烏干達: https://discord.com/api/webhooks/960789311580672000/sMrpqSw1p6a_L9_T4ZB6U1tMLkj2_MiMxUqNaIviTtyKP4FUDPuWC1S_q2jFM9Ii_pPO
-             */
+            id: LogWebhookId,
+            token: LogWebhookToken
         }).send({
             embeds: [Log]
         }).catch((err) => console.log(err));

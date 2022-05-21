@@ -32,7 +32,11 @@ module.exports = {
                 value: `請問有甚麼吩咐?`
             }, {
                 name: `系統命令`,
-                value: `可以使用 "/" 調用相關指令喔~\n 或輸入 "小遊戲" 來與朋友互動~`
+                value: [
+                    `可以使用 \`/\` 調用指令喔~`,
+                    `有音樂、清除、贈品等相關指令`,
+                    `輸入 \`小遊戲\` 來與朋友互動~`
+                ].join("\n")
             })
             .setImage("https://cdn.discordapp.com/attachments/960812835837976576/965239511430856725/love.gif")
             .setTimestamp()

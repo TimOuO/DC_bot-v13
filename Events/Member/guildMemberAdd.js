@@ -3,6 +3,10 @@ const {
     WebhookClient,
     GuildMember
 } = require("discord.js");
+const {
+    MemberWebhookId,
+    MemberWebhookToken
+} = require("../../Structures/config.json");
 
 module.exports = {
     name: "guildMemberAdd", // 公會成員添加 guildMemberAdd
@@ -20,10 +24,8 @@ module.exports = {
 
         const Welcomer = new WebhookClient({
             // 到任意頻道 設定>整合>Webhook>建立一個並複製URL
-            // 胖胖 https://discord.com/api/webhooks/960808316827746314/RzlZwCGjGjqz1B8lT9669ChyyWY9BA5m2d6tP_bNlZvH3YhD1BonMC_DA_aBiqO8J5BE
-            id: "960808316827746314",
-            token: "RzlZwCGjGjqz1B8lT9669ChyyWY9BA5m2d6tP_bNlZvH3YhD1BonMC_DA_aBiqO8J5BE"
-            // 烏干達 https://discord.com/api/webhooks/960084224273154068/tXGWo6YWAKgCMJXQN8vcAirq1evt1nSyCOHCEIDhdI78G0aNX9iyIZ9HuCDPIx6NikUj
+            id: MemberWebhookId,
+            token: MemberWebhookToken
         });
 
         const Welcome = new MessageEmbed()
@@ -41,7 +43,7 @@ module.exports = {
             }))
             .setDescription(`歡迎 ${member} 來到 **${guild.name}**!\n
             創造帳號時間: <t:${parseInt(user.createdTimestamp/1000)}:R>\n
-            會員人數: **${guild.memberCount}**`) // Account Created Latest Member Count
+            會員人數: **${guild.memberCount}**`)
             .setFooter({
                 text: `會員 ID: ${user.id}`
             })

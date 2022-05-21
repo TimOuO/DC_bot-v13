@@ -15,8 +15,11 @@ module.exports = {
     execute(client) {
         console.log(`${client.user.tag} Login!`);
 
-        client.user.setActivity("阿肥肥❤️", {
-            type: "WATCHING"
+        client.user.setActivity("阿肥肥說❤️", {
+            type: "LISTENING" // COMPETING, LISTENING, PLAYING, STREAMING, WATCHING
+        })
+        client.user.setPresence({
+            status: "online" // online/invisible/idle/dnd
         })
 
         if (!Database) return;
